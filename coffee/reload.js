@@ -30,10 +30,10 @@
 //   };
 // })();
 
-var findTab = function() {
+var findTab = function(reloadUrl) {
 	chrome.tabs.query({}, function(tabs) {
 		tabs.forEach(function(tab) {
-			if (tab.active) {
+			if (tab.url.indexOf(reloadUrl) > 1) {
 				chrome.tabs.reload(tab.id);
 			};
 		})
@@ -43,6 +43,6 @@ var findTab = function() {
 var socket = io.connect('http://localhost:80/');
 socket.on('change', function (data) {
 	console.log(data);
-	findTab();
+	findTab(data.reloadUrl);
 	socket.emit('reload done');
 })
