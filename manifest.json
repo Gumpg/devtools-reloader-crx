@@ -5,11 +5,12 @@
   "description": "Reload pages in debugging",
   "homepage_url": "http://tiye.me",
   "web_accessible_resources": [
-    "src/*"
+    "coffee/*"
   ],
   "background": {
     "scripts": [
-      "src/reload.js"
+      "coffee/socket.io.js",
+      "coffee/reload.js"
     ]
   },
   "permissions": [
